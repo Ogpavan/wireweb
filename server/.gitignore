@@ -1,0 +1,7 @@
+store/
+*.db
+*.db-*
+service-account.json
+.env
+*.exe
+.gocache/
