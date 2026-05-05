@@ -1,5 +1,5 @@
 import {BellIcon, ChevronLeftIcon, ChevronRightIcon, SearchIcon, ThreeBarsIcon} from '@primer/octicons-react'
-import {Button, Label, Text} from '@primer/react'
+import {Button,   Text} from '@primer/react'
 import {useAuth} from '../../app/AuthProvider'
 
 interface TopbarProps {
