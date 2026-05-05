@@ -29,15 +29,8 @@ export function Topbar({onMenuClick, onToggleSidebar, isSidebarCollapsed}: Topba
             <ChevronLeftIcon aria-hidden="true" size={16} />
           )}
         </Button>
-        <div>
-          <Text as="p" className="topbar__eyebrow">
-            Workspace
-          </Text>
-          <Text as="p" className="topbar__title">
-            API Platform
-          </Text>
-        </div>
-        <Label className="environment-badge">Test</Label>
+        
+        
       </div>
       <div className="topbar__search" role="search" aria-label="Console search">
         <SearchIcon aria-hidden="true" size={16} />

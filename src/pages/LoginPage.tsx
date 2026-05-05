@@ -1,7 +1,7 @@
 import {AlertIcon, MarkGithubIcon} from '@primer/octicons-react'
 import {Button, Heading, Text} from '@primer/react'
 import {FormEvent, useState} from 'react'
-import {Navigate, useLocation, useNavigate, type Location} from 'react-router-dom'
+import {Link, Navigate, useLocation, useNavigate, type Location} from 'react-router-dom'
 import {useAuth} from '../app/AuthProvider'
 
 interface LoginLocationState {
@@ -73,10 +73,6 @@ export function LoginPage() {
           </div>
         </div>
 
-        <Text as="p" className="login-panel__description">
-          Use a Firebase Email/Password user created in the Firebase console.
-        </Text>
-
         {error && (
           <div className="login-error" role="alert">
             <AlertIcon aria-hidden="true" size={16} />
@@ -93,7 +89,6 @@ export function LoginPage() {
               className="login-input"
               name="email"
               onChange={(event) => setEmail(event.target.value)}
-              placeholder="admin@example.com"
               required
               type="email"
               value={email}
@@ -107,7 +102,6 @@ export function LoginPage() {
               className="login-input"
               name="password"
               onChange={(event) => setPassword(event.target.value)}
-              placeholder="Enter password"
               required
               type="password"
               value={password}
@@ -118,6 +112,10 @@ export function LoginPage() {
             {isSubmitting ? 'Signing in...' : 'Sign in'}
           </Button>
         </form>
+
+        <Text as="p" className="login-switch">
+          Need an account? <Link to="/signup">Sign up</Link>
+        </Text>
       </section>
     </main>
   )

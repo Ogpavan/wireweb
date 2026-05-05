@@ -67,9 +67,39 @@ export async function apiRequest<TResponse>(path: string, options: ApiRequestOpt
   return payload as TResponse
 }
 
+async function publicApiRequest<TResponse>(path: string, options: Omit<ApiRequestOptions, 'headers'> & {headers?: HeadersInit} = {}) {
+  const headers = new Headers(options.headers)
+
+  if (options.body !== undefined && !headers.has('Content-Type')) {
+    headers.set('Content-Type', 'application/json')
+  }
+
+  const response = await fetch(`${apiBaseUrl}${path}`, {
+    ...options,
+    headers,
+    body: options.body === undefined ? undefined : JSON.stringify(options.body),
+  })
+
+  const payload = await parseResponse(response)
+
+  if (!response.ok) {
+    const message = typeof payload === 'object' && payload !== null && 'message' in payload
+      ? String(payload.message)
+      : `Request failed with status ${response.status}`
+
+    throw new ApiError(message, response.status, payload)
+  }
+
+  return payload as TResponse
+}
+
 export const apiClient = {
   get: <TResponse>(path: string) => apiRequest<TResponse>(path),
   post: <TResponse>(path: string, body?: unknown) => apiRequest<TResponse>(path, {method: 'POST', body}),
   put: <TResponse>(path: string, body?: unknown) => apiRequest<TResponse>(path, {method: 'PUT', body}),
   delete: <TResponse>(path: string, body?: unknown) => apiRequest<TResponse>(path, {method: 'DELETE', body}),
+}
+
+export const publicApiClient = {
+  post: <TResponse>(path: string, body?: unknown) => publicApiRequest<TResponse>(path, {method: 'POST', body}),
 }

@@ -1263,6 +1263,8 @@ code {
 }
 
 .login-panel {
+  position: relative;
+  z-index: 1;
   width: min(100%, 430px);
   padding: 28px;
   border: 1px solid var(--color-border);
@@ -1302,12 +1304,6 @@ code {
   line-height: 1.25;
 }
 
-.login-panel__description {
-  margin: 0 0 22px;
-  color: var(--color-text-secondary);
-  font-size: 14px;
-}
-
 .login-error {
   display: flex;
   align-items: flex-start;
@@ -1344,6 +1340,10 @@ code {
   color: var(--color-text-primary);
 }
 
+.login-page .login-input {
+  border-color: #22c55e;
+}
+
 .login-input::placeholder {
   color: var(--color-text-secondary);
 }
@@ -1351,6 +1351,23 @@ code {
 .login-button {
   width: 100%;
   margin-top: 4px;
+}
+
+.login-switch {
+  margin: 14px 0 0;
+  color: var(--color-text-secondary);
+  text-align: center;
+  font-size: 13px;
+}
+
+.login-switch a {
+  color: var(--color-accent-emphasis);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-switch a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 1180px) {

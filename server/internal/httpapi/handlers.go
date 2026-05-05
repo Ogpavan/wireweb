@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/firestore"
+	firebaseauth "firebase.google.com/go/v4/auth"
 	"github.com/go-chi/chi/v5"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -25,8 +26,15 @@ import (
 
 type Handlers struct {
 	logger          *slog.Logger
+	authClient      *firebaseauth.Client
 	firestoreClient *firestore.Client
 	sessionManager  *session.Manager
+}
+
+type signupRequest struct {
+	FullName string `json:"fullName"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 type saveAPIKeyRequest struct {
@@ -118,6 +126,68 @@ func (h *Handlers) Health(w http.ResponseWriter, _ *http.Request) {
 	writeJSON(w, http.StatusOK, map[string]string{
 		"status":  "ok",
 		"service": "wire-server",
+	})
+}
+
+func (h *Handlers) SignUp(w http.ResponseWriter, r *http.Request) {
+	var req signupRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeError(w, http.StatusBadRequest, "invalid json body")
+		return
+	}
+
+	fullName := strings.TrimSpace(req.FullName)
+	email := strings.TrimSpace(strings.ToLower(req.Email))
+	password := strings.TrimSpace(req.Password)
+
+	if fullName == "" {
+		writeError(w, http.StatusBadRequest, "fullName is required")
+		return
+	}
+	if email == "" || !strings.Contains(email, "@") {
+		writeError(w, http.StatusBadRequest, "valid email is required")
+		return
+	}
+	if len(password) < 6 {
+		writeError(w, http.StatusBadRequest, "password must be at least 6 characters")
+		return
+	}
+
+	params := (&firebaseauth.UserToCreate{}).
+		Email(email).
+		Password(password).
+		DisplayName(fullName).
+		EmailVerified(false)
+
+	userRecord, err := h.authClient.CreateUser(r.Context(), params)
+	if err != nil {
+		if strings.Contains(strings.ToLower(err.Error()), "email-already-exists") {
+			writeError(w, http.StatusConflict, "an account with this email already exists")
+			return
+		}
+		h.logger.Error("failed to create firebase user", "email", email, "error", err)
+		writeError(w, http.StatusInternalServerError, "failed to create account")
+		return
+	}
+
+	now := time.Now().UTC()
+	if _, err := h.firestoreClient.Collection("users").Doc(userRecord.UID).Set(r.Context(), map[string]any{
+		"email":     email,
+		"fullName":  fullName,
+		"createdAt": now,
+		"updatedAt": now,
+	}, firestore.MergeAll); err != nil {
+		h.logger.Error("failed to create user profile", "uid", userRecord.UID, "error", err)
+		_ = h.authClient.DeleteUser(context.Background(), userRecord.UID)
+		writeError(w, http.StatusInternalServerError, "failed to create account profile")
+		return
+	}
+
+	writeJSON(w, http.StatusCreated, map[string]any{
+		"uid":       userRecord.UID,
+		"email":     email,
+		"fullName":  fullName,
+		"createdAt": now,
 	})
 }
 

@@ -1,5 +1,6 @@
 import {onIdTokenChanged, signInWithEmailAndPassword, signOut, type User} from 'firebase/auth'
 import {createContext, useCallback, useContext, useEffect, useMemo, useState, type PropsWithChildren} from 'react'
+import {publicApiClient} from '../services/apiClient'
 import {firebaseAuth} from '../services/firebase'
 import type {AuthState} from '../types/auth'
 
@@ -19,6 +20,13 @@ export function AuthProvider({children}: PropsWithChildren) {
   }, [])
 
   const login = useCallback(async (email: string, password: string) => {
+    const credential = await signInWithEmailAndPassword(firebaseAuth, email, password)
+    setUser(credential.user)
+    setToken(await credential.user.getIdToken())
+  }, [])
+
+  const signup = useCallback(async (fullName: string, email: string, password: string) => {
+    await publicApiClient.post('/v1/auth/signup', {fullName, email, password})
     const credential = await signInWithEmailAndPassword(firebaseAuth, email, password)
     setUser(credential.user)
     setToken(await credential.user.getIdToken())
@@ -47,10 +55,11 @@ export function AuthProvider({children}: PropsWithChildren) {
       token,
       isLoading,
       login,
+      signup,
       logout,
       refreshToken,
     }),
-    [isLoading, login, logout, refreshToken, token, user],
+    [isLoading, login, logout, refreshToken, signup, token, user],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

@@ -14,7 +14,12 @@ type Config struct {
 }
 
 func Load() Config {
-	loadDotEnv(".env")
+	appEnv := strings.ToLower(env("APP_ENV", "local"))
+	if appEnv == "production" {
+		loadDotEnv(".env.production")
+	} else {
+		loadDotEnv(".env.local")
+	}
 
 	return Config{
 		Port:              env("PORT", "8080"),

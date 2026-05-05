@@ -13,15 +13,25 @@ Go backend for the Wire console.
 
 1. Create a Firebase service account JSON file.
 2. Put it at `server/service-account.json` or point `GOOGLE_APPLICATION_CREDENTIALS` to its absolute path.
-3. Copy `.env.example` to `.env` and update values if needed.
+3. Update values in `server/.env.local`.
 4. Run:
 
 ```sh
 go mod tidy
-go run ./cmd/api
+APP_ENV=local go run ./cmd/api
 ```
 
 The server listens on `http://localhost:8080` by default.
+
+## Production Setup
+
+1. Update values in `server/.env.production`.
+2. Ensure `GOOGLE_APPLICATION_CREDENTIALS` points to a valid service account path in production.
+3. Start with:
+
+```sh
+APP_ENV=production go run ./cmd/api
+```
 
 ## Auth Contract
 

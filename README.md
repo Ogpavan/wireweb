@@ -10,6 +10,7 @@ Full-stack app:
 Frontend:
 
 ```sh
+# edit values in .env.local
 npm ci
 npm run dev
 ```
@@ -18,9 +19,26 @@ Backend:
 
 ```sh
 cd server
-cp .env.example .env
+# edit values in server/.env.local
 # create/provide server/service-account.json (see server/README.md)
-go run ./cmd/api
+APP_ENV=local go run ./cmd/api
+```
+
+## Production env files
+
+Frontend (Vite reads this automatically on build):
+
+```sh
+# edit values in .env.production
+npm run build
+```
+
+Backend:
+
+```sh
+cd server
+# edit values in server/.env.production
+APP_ENV=production go run ./cmd/api
 ```
 
 ## GitHub Pages (frontend)

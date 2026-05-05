@@ -31,6 +31,7 @@ func NewRouter(cfg RouterConfig) http.Handler {
 
 	h := &Handlers{
 		logger:          cfg.Logger,
+		authClient:      cfg.AuthClient,
 		firestoreClient: cfg.FirestoreClient,
 		sessionManager:  cfg.SessionManager,
 	}
@@ -38,6 +39,7 @@ func NewRouter(cfg RouterConfig) http.Handler {
 	r.Get("/health", h.Health)
 
 	r.Route("/v1", func(r chi.Router) {
+		r.Post("/auth/signup", h.SignUp)
 		r.Post("/messages", h.SendMessageWithAPIKey)
 		r.Post("/media", h.SendMediaWithAPIKey)
 		r.Get("/contacts", h.ListContactsWithAPIKey)

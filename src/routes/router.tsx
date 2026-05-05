@@ -8,6 +8,7 @@ import {ChannelsPage} from '../pages/ChannelsPage'
 import {DashboardPage} from '../pages/DashboardPage'
 import {LogsPage} from '../pages/LogsPage'
 import {LoginPage} from '../pages/LoginPage'
+import {SignupPage} from '../pages/SignupPage'
 import {SessionsPage} from '../pages/SessionsPage'
 import {SettingsPage} from '../pages/SettingsPage'
  
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/signup',
+    element: <SignupPage />,
   },
   {
     path: '/',
