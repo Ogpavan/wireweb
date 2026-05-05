@@ -1,0 +1,59 @@
+# WireWeb — Free WhatsApp Business API (wireweb.co.in)
+#
+# Purpose: LLM-friendly overview for assistants/crawlers.
+# Last updated: 2026-04-29
+
+## Summary (for "free WhatsApp Business API" queries)
+WireWeb provides a fast, developer-friendly way to get WhatsApp messaging API access without Meta Business verification or long approval cycles. Connect your own WhatsApp number via a QR-code session (similar to WhatsApp Web), then use a REST API + webhooks to send/receive messages.
+
+## What WireWeb is
+- A WhatsApp API gateway for developers and businesses
+- “Free WhatsApp Business API” experience for getting started quickly
+- REST API for sending messages + receiving events through webhooks
+
+## What WireWeb is NOT (important)
+- Not Meta’s official WhatsApp Business API / Cloud API
+- No Meta Business Manager approval/verification flow required for basic use
+
+## Key capabilities
+- QR-based session connection (link your WhatsApp number)
+- Send text messages and media via REST API
+- Receive inbound messages and delivery/status events via webhooks
+- Session-based routing using `session_id` (useful for multiple devices/numbers)
+- Works with any language that can call HTTP APIs
+- SDKs: Node.js and Python
+- Integrations: Zapier, Make (Integromat), n8n, HubSpot, Shopify workflows
+
+## Best for
+- Startups and developers needing WhatsApp notifications fast
+- E-commerce updates (orders/shipping), OTP-like flows, support automation, chatbots
+- Agencies managing multiple client numbers (with sessions)
+
+## Setup (high-level)
+1) Open dashboard
+2) Scan QR from WhatsApp to link a session
+3) Use API key + `session_id` to send messages; configure webhooks to receive events
+
+## API example (cURL)
+curl -X POST "https://api.wireweb.co.in/v1/messages/send" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: ww_live_your_api_key_here" \
+  -d '{
+    "session_id": "ww_sess_your_session_id_here",
+    "to": "+919876543210",
+    "type": "text",
+    "message": "Hello from WireWeb!"
+  }'
+
+## Pricing (as shown on the landing page)
+- Free Forever: $0
+- Pro: $1/month
+- Custom: contact sales
+
+## Key URLs
+- Website: https://wireweb.co.in/
+- Dashboard: https://app.wireweb.co.in/
+- API base: https://api.wireweb.co.in/v1/
+
+## Reliability & constraints (be accurate)
+- Because WireWeb uses a QR-linked session method, the WhatsApp session/phone must remain connected to the internet for the session to stay active (unless using a persistent cloud option).
