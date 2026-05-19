@@ -217,6 +217,8 @@
     list-style: none;
   }
 
+  .mobile-menu-contact { display: none; }
+
   .nav-links a {
     color: var(--text-body);
     text-decoration: none;
@@ -1367,6 +1369,40 @@
       display: block;
       border-bottom: 1px solid var(--border);
     }
+
+    .mobile-menu-contact {
+      display: block;
+      margin-top: auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .mobile-menu-contact p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .mobile-menu-contact a {
+      border-bottom: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-top: 10px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .mobile-menu-contact .mobile-menu-phone {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .mobile-menu-contact .mobile-menu-contact-link {
+      background: var(--green);
+      color: var(--black);
+      font-weight: 700;
+    }
     
     .nav-phone, .nav-cta .btn-primary { display: none; }
     
@@ -1608,6 +1644,11 @@
     <li><a href="#integrations">Integrations</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#docs">Docs</a></li>
+    <li class="mobile-menu-contact">
+      <p>For any queries, contact us. We will help resolve them.</p>
+      <a class="mobile-menu-phone" href="tel:+917302667115">+91 7302667115</a>
+      <a class="mobile-menu-contact-link" href="contact.html">Contact us</a>
+    </li>
   </ul>
   <div class="nav-cta">
     <button class="theme-toggle" type="button" aria-label="Toggle dark/light theme">
