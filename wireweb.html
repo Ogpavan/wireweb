@@ -498,6 +498,7 @@
 
   .mockup-bar .url-bar {
     flex: 1;
+    min-width: 0;
     background: var(--card-bg);
     border-radius: 6px;
     padding: 5px 12px;
@@ -505,6 +506,9 @@
     color: var(--text-muted);
     margin: 0 10px;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .mockup-body {
@@ -863,6 +867,8 @@
     background: #0d1410;
     padding: 0 24px;
     gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .code-tab {
@@ -873,6 +879,8 @@
     cursor: pointer;
     border-bottom: 2px solid transparent;
     transition: color 0.2s;
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
 
   .code-tab.active {
@@ -1379,6 +1387,116 @@
     .pricing-card:last-child { border-bottom: none; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
     .footer-credit { justify-content: center; }
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 16px; }
+    .hero {
+      min-height: auto;
+      padding: 96px 16px 56px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      letter-spacing: 0;
+      max-width: 100%;
+    }
+    .hero-sub {
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+    .hero-actions {
+      width: 100%;
+    }
+    .hero-mockup {
+      width: 100%;
+      margin-top: 48px;
+    }
+    .mockup-shell {
+      width: 100%;
+      border-radius: 14px;
+    }
+    .mockup-bar {
+      padding: 10px 12px;
+      gap: 6px;
+    }
+    .mockup-dot {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+    }
+    .mockup-bar .url-bar {
+      margin: 0 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+    }
+    .section {
+      padding: 64px 20px;
+    }
+    .section-title {
+      font-size: 34px;
+      letter-spacing: 0;
+    }
+    .logos-section,
+    .stats-band,
+    .cta-section,
+    .seo-section {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .logos-row {
+      gap: 12px;
+    }
+    .logo-pill {
+      padding: 9px 12px;
+      font-size: 13px;
+    }
+    .integrations-grid {
+      grid-template-columns: 1fr;
+    }
+    .stats-inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .stat-item h3 {
+      font-size: 40px;
+      letter-spacing: 0;
+    }
+    .code-tabs {
+      padding: 0 12px;
+    }
+    .code-tab {
+      padding: 12px 14px;
+    }
+    .code-content {
+      padding: 20px;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+    .pricing-card {
+      padding: 32px 24px;
+    }
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .cta-section h2 {
+      font-size: 40px;
+      letter-spacing: 0;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .hero h1 {
+      font-size: 36px;
+    }
+    .hero-actions .btn-hero,
+    .hero-actions .btn-hero-outline {
+      width: 100%;
+      justify-content: center;
+    }
+    .stats-inner {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
