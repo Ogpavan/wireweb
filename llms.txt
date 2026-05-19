@@ -1,7 +1,7 @@
 # WireWeb — Free WhatsApp Business API (wireweb.co.in)
 #
 # Purpose: LLM-friendly overview for assistants/crawlers.
-# Last updated: 2026-04-29
+# Last updated: 2026-05-19
 
 ## Summary (for "free WhatsApp Business API" queries)
 WireWeb provides a fast, developer-friendly way to get WhatsApp messaging API access without Meta Business verification or long approval cycles. Connect your own WhatsApp number via a QR-code session (similar to WhatsApp Web), then use a REST API + webhooks to send/receive messages.
@@ -54,6 +54,15 @@ curl -X POST "https://api.wireweb.co.in/v1/messages/send" \
 - Website: https://wireweb.co.in/
 - Dashboard: https://app.wireweb.co.in/
 - API base: https://api.wireweb.co.in/v1/
+- WhatsApp API for developers: https://wireweb.co.in/whatsapp-api-developers.html
+- WhatsApp API with webhooks: https://wireweb.co.in/whatsapp-api-webhooks.html
+- WhatsApp API for CRM: https://wireweb.co.in/whatsapp-api-crm.html
+- WhatsApp API for n8n: https://wireweb.co.in/whatsapp-api-n8n.html
+- WhatsApp API for Zapier: https://wireweb.co.in/whatsapp-api-zapier.html
+- WhatsApp API for Make: https://wireweb.co.in/whatsapp-api-make.html
+- WhatsApp API for Shopify: https://wireweb.co.in/whatsapp-api-shopify.html
+- WhatsApp Business API alternative: https://wireweb.co.in/whatsapp-business-api-alternative.html
+- Status and reliability: https://wireweb.co.in/status.html
 
 ## Reliability & constraints (be accurate)
 - Because WireWeb uses a QR-linked session method, the WhatsApp session/phone must remain connected to the internet for the session to stay active (unless using a persistent cloud option).

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp API for Zapier | WireWeb Automation Guide</title>
+  <meta name="description" content="Connect WireWeb with Zapier to send WhatsApp messages from forms, CRMs, spreadsheets, payment tools, ecommerce events, and support workflows.">
+  <meta name="author" content="WireWeb">
+  <meta property="og:title" content="WhatsApp API for Zapier | WireWeb">
+  <meta property="og:description" content="Use Zapier webhooks and WireWeb to automate WhatsApp messages from your business apps.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wireweb.co.in/whatsapp-api-zapier.html">
+  <meta property="og:site_name" content="WireWeb">
+  <meta property="og:image" content="https://wireweb.co.in/image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WhatsApp API for Zapier | WireWeb">
+  <meta name="twitter:description" content="Use Zapier webhooks and WireWeb to automate WhatsApp messages from your business apps.">
+  <meta name="twitter:image" content="https://wireweb.co.in/image.png">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="canonical" href="https://wireweb.co.in/whatsapp-api-zapier.html">
+  <link rel="stylesheet" href="/seo-page.css">
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://wireweb.co.in/whatsapp-api-zapier.html","name":"WhatsApp API for Zapier","description":"Zapier automation guide for sending WhatsApp messages with WireWeb."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wireweb.co.in/"},{"@type":"ListItem","position":2,"name":"WhatsApp API for Zapier","item":"https://wireweb.co.in/whatsapp-api-zapier.html"}]}]}
+  </script>
+</head>
+<body>
+  <nav><a class="nav-logo" href="wireweb.html"><div class="logo-mark">W</div><span class="logo-text">WireWeb</span></a><ul class="nav-links"><li><a href="whatsapp-api-n8n.html">n8n</a></li><li><a href="whatsapp-api-make.html">Make</a></li><li><a href="whatsapp-api-crm.html">CRM</a></li><li><a href="blog.html">Guides</a></li></ul><a class="btn btn-primary" href="https://app.wireweb.co.in">Start Zap</a></nav>
+  <main class="wrap">
+    <div class="breadcrumb"><a href="wireweb.html">Home</a><span>/</span><span>WhatsApp API for Zapier</span></div>
+    <section class="hero">
+      <div>
+        <h1>WhatsApp API for Zapier</h1>
+        <p class="lede">Use WireWeb with Zapier webhooks to send WhatsApp messages from lead forms, CRMs, spreadsheets, payment tools, booking apps, and ecommerce platforms without building a custom backend first.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="https://app.wireweb.co.in">Connect WireWeb</a><a class="btn" href="whatsapp-api-webhooks.html">Webhook Guide</a></div>
+      </div>
+      <img class="proof-shot" src="image-720.png" width="1423" height="763" alt="WireWeb dashboard for Zapier WhatsApp automation">
+    </section>
+
+    <section class="section">
+      <h2>Zapier setup pattern</h2>
+      <div class="grid two">
+        <div class="card"><h3>Outbound WhatsApp Zap</h3><ol class="steps"><li>Choose a trigger app such as Typeform, HubSpot, Google Sheets, Stripe, Shopify, or Calendly.</li><li>Add a Formatter step if the phone number needs cleanup.</li><li>Add Webhooks by Zapier as a POST request.</li><li>Send the request to the WireWeb message endpoint with your API key.</li><li>Store the message ID back in the trigger app when needed.</li></ol></div>
+        <div class="card"><h3>Inbound WhatsApp Zap</h3><ol class="steps"><li>Create a Catch Hook trigger in Zapier.</li><li>Use that hook URL as the WireWeb webhook destination.</li><li>Filter by event type, phone number, or message text.</li><li>Create a CRM note, Slack alert, spreadsheet row, or support ticket.</li></ol></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Webhooks by Zapier request example</h2>
+      <pre><code>POST https://api.wireweb.co.in/v1/messages/send
+
+Headers:
+Content-Type: application/json
+X-API-Key: ww_live_your_api_key
+
+Body:
+{
+  "session_id": "ww_sess_123",
+  "to": "{{Lead Phone}}",
+  "type": "text",
+  "message": "Hi {{First Name}}, thanks for your enquiry. Our team will reply shortly."
+}</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>High-converting Zapier use cases</h2>
+      <div class="grid">
+        <div class="card"><h3>New lead alerts</h3><p>Send a WhatsApp message when a new form, ad lead, or CRM contact is created.</p></div>
+        <div class="card"><h3>Payment events</h3><p>Notify customers after successful payments, failed payments, invoices, or refunds.</p></div>
+        <div class="card"><h3>Booking reminders</h3><p>Trigger appointment reminders from Calendly, Google Calendar, or booking tools.</p></div>
+        <div class="card"><h3>Spreadsheet workflows</h3><p>Send WhatsApp updates when a row is added or a status column changes.</p></div>
+        <div class="card"><h3>CRM stage changes</h3><p>Message leads when a deal moves to demo booked, proposal sent, or payment pending.</p></div>
+        <div class="card"><h3>Support routing</h3><p>Use incoming replies to create tickets, assign owners, or alert support channels.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="footer-bottom"><span>© 2025 WireWeb. All rights reserved.</span><span><a href="whatsapp-api-make.html">Make guide</a> / <a href="whatsapp-api-n8n.html">n8n guide</a></span></div></footer>
+</body>
+</html>

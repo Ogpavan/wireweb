@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp API for Make | WireWeb Scenario Automation</title>
+  <meta name="description" content="Use WireWeb with Make to automate WhatsApp messages from forms, CRM updates, Shopify orders, payments, support workflows, and webhook events.">
+  <meta name="author" content="WireWeb">
+  <meta property="og:title" content="WhatsApp API for Make | WireWeb">
+  <meta property="og:description" content="Build Make scenarios that send and receive WhatsApp messages through WireWeb.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wireweb.co.in/whatsapp-api-make.html">
+  <meta property="og:site_name" content="WireWeb">
+  <meta property="og:image" content="https://wireweb.co.in/image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WhatsApp API for Make | WireWeb">
+  <meta name="twitter:description" content="Build Make scenarios that send and receive WhatsApp messages through WireWeb.">
+  <meta name="twitter:image" content="https://wireweb.co.in/image.png">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="canonical" href="https://wireweb.co.in/whatsapp-api-make.html">
+  <link rel="stylesheet" href="/seo-page.css">
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://wireweb.co.in/whatsapp-api-make.html","name":"WhatsApp API for Make","description":"Make scenario guide for sending and receiving WhatsApp messages with WireWeb."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wireweb.co.in/"},{"@type":"ListItem","position":2,"name":"WhatsApp API for Make","item":"https://wireweb.co.in/whatsapp-api-make.html"}]}]}
+  </script>
+</head>
+<body>
+  <nav><a class="nav-logo" href="wireweb.html"><div class="logo-mark">W</div><span class="logo-text">WireWeb</span></a><ul class="nav-links"><li><a href="whatsapp-api-zapier.html">Zapier</a></li><li><a href="whatsapp-api-n8n.html">n8n</a></li><li><a href="whatsapp-api-shopify.html">Shopify</a></li><li><a href="blog.html">Guides</a></li></ul><a class="btn btn-primary" href="https://app.wireweb.co.in">Start Scenario</a></nav>
+  <main class="wrap">
+    <div class="breadcrumb"><a href="wireweb.html">Home</a><span>/</span><span>WhatsApp API for Make</span></div>
+    <section class="hero">
+      <div>
+        <h1>WhatsApp API for Make</h1>
+        <p class="lede">WireWeb works with Make scenarios through HTTP modules and webhook triggers, making it practical to automate WhatsApp messages across CRMs, forms, Shopify orders, payment tools, and support workflows.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="https://app.wireweb.co.in">Connect WireWeb</a><a class="btn" href="whatsapp-api-webhooks.html">Webhook Guide</a></div>
+      </div>
+      <img class="proof-shot" src="image-720.png" width="1423" height="763" alt="WireWeb dashboard for Make WhatsApp automation">
+    </section>
+
+    <section class="section">
+      <h2>Make scenario setup</h2>
+      <div class="grid two">
+        <div class="card"><h3>Send scenario</h3><ol class="steps"><li>Start with a trigger module such as Shopify, HubSpot, Google Sheets, Stripe, or a custom webhook.</li><li>Add filters to avoid sending messages on the wrong status.</li><li>Add an HTTP module and call the WireWeb send endpoint.</li><li>Save the response message ID for logs or CRM notes.</li></ol></div>
+        <div class="card"><h3>Receive scenario</h3><ol class="steps"><li>Create a custom webhook in Make.</li><li>Use that URL as the WireWeb webhook destination.</li><li>Parse the event payload and route by session, sender, or message text.</li><li>Create downstream actions in CRM, support, Slack, sheets, or email.</li></ol></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>HTTP module request example</h2>
+      <pre><code>POST https://api.wireweb.co.in/v1/messages/send
+
+Headers:
+Content-Type: application/json
+X-API-Key: ww_live_your_api_key
+
+Body:
+{
+  "session_id": "ww_sess_123",
+  "to": "{{1.customer_phone}}",
+  "type": "text",
+  "message": "Hi {{1.first_name}}, your request {{1.request_id}} has been received."
+}</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>Make workflows that fit WireWeb</h2>
+      <div class="grid">
+        <div class="card"><h3>Router-based support</h3><p>Send incoming replies to different teams based on keyword, customer segment, or order status.</p></div>
+        <div class="card"><h3>Payment reminders</h3><p>Trigger WhatsApp reminders from Stripe, Razorpay, invoices, or spreadsheet dates.</p></div>
+        <div class="card"><h3>Order operations</h3><p>Connect Shopify, WooCommerce, logistics tools, and WhatsApp notifications in one scenario.</p></div>
+        <div class="card"><h3>Lead follow-up</h3><p>Send instant WhatsApp responses when a lead enters your CRM or form tool.</p></div>
+        <div class="card"><h3>Data enrichment</h3><p>Format names, phone numbers, language, and templates before sending messages.</p></div>
+        <div class="card"><h3>Webhook logging</h3><p>Store inbound and outbound events in sheets, databases, or internal dashboards.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="footer-bottom"><span>© 2025 WireWeb. All rights reserved.</span><span><a href="whatsapp-api-zapier.html">Zapier guide</a> / <a href="whatsapp-api-n8n.html">n8n guide</a></span></div></footer>
+</body>
+</html>
