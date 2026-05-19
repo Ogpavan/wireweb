@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">WireWeb favicon</title>
+  <desc id="desc">A rounded green square with a stylized white W and signal dot for WireWeb.</desc>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22e58a"/>
+      <stop offset="1" stop-color="#0e9e5c"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bg)"/>
+  <path d="M15 18h8l6.5 17.5L36 22l6.5 13.5L49 18h8L46.5 46h-8.2L32 33.7 25.7 46h-8.2L15 18Z" fill="#f6fff9"/>
+  <circle cx="50" cy="48" r="5" fill="#0b2014"/>
+  <circle cx="50" cy="48" r="2.2" fill="#f6fff9"/>
+</svg>
